@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="jquery-1.11.3.min.js"></script>
+</head>
+<body>
+  我草你真牛逼
+  <script>
+  // $.get("api",{"name":"aa"},()=>{
+
+  // })
+  $.ajax({
+    url:"api",
+    type:"get",
+    data:{"name":"aa","password":"123"},
+    success:function(data){
+      console.log(data);
+    }
+  })
+//   $.post("api","name=zhaodongfang",()=>{
+
+// })
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div v-if="show">aaaaa</div>
+    <div v-else>bbbbb</div>
+
+    <div v-if="num==1">111</div>
+    <div v-else-if="num==2">222</div>
+    <div v-else>333</div>
+
+    <template v-if="show">
+      <div>aaa</div>
+      <div>aaa</div>
+      <div>aaa</div>
+      <div>aaa</div>
+    </template>
+    <template v-else>
+      <div>bbb</div>
+      <div>bbb</div>
+      <div>bbb</div>
+    </template>
+
+    <div v-show="false">123123</div>
+
+  </div>
+
+
+
+  <script src="vue.js"></script>
+  <script>
+  var vm=new Vue({
+    el:"#app",
+    data:{
+      show:true,
+      num:3
+
+
+    },
+  })
+  
+  </script>
+</body>
+</html>

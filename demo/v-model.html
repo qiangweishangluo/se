@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input v-model.lazy="text" type="text">{{text}}
+    <input v-model.lazy="checkbox" type="checkbox" value="a">
+    <input v-model.lazy="checkbox" type="checkbox" value="b">
+    <input v-model.lazy="checkbox" type="checkbox" value="c">{{checkbox}}
+    <input v-model="radio" type="radio" value="a">
+    <input v-model="radio" type="radio" value="b">{{radio}}
+    <select v-model="select" name="" id="">
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select>
+    {{select}}
+
+  </div>
+  <script src="vue.js"></script>
+  <script>
+  var vm=new Vue({
+    el:"#app",
+    data:{
+      text:"",
+      checkbox:[],
+      radio:"",
+      select:""
+    },
+    methods:{
+      
+    }
+  })
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <my-header></my-header>
+    <mytitle></mytitle>
+    <temp1></temp1>
+  </div>
+  <div id="app2">
+    <my-header></my-header>
+    <!-- <my-title></my-title> -->
+
+  </div>
+  <template id="temp1"><div>{{count}}</div> </template>
+  
+  <!-- <script id="temp1" type="text/x-template">
+    <div>{{count}}</div> 
+  </script> -->
+  <script src="vue.js"></script>
+  <script>
+    Vue.component('my-header',{
+      template:'<p @click="show">我是头 {{message}}</p>',
+      data(){
+        return {
+          message:"hello"
+        }
+      },
+      // data:{
+      //     message:"hello"
+      // },
+      methods:{
+        show(){
+          alert(this.message);
+        }
+      }
+    })
+
+    Vue.component('temp1',{
+      template:"#temp1",
+      data(){
+        return{
+          count:0
+        }
+      }
+    })
+
+    var vm=new Vue({
+      el:"#app",
+      data:{ 
+
+      },
+      components:{
+        mytitle:{
+          template:"<h2>我是title</h2>"
+        },
+      }
+    })
+
+    var vm2=new Vue({
+      el:"#app2"
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  #div1{
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    left: 0;
+    top:0;
+  }
+  #div2{
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    position: absolute;
+    top:0;
+    left:0;
+  }
+  </style>
+</head>
+<body>
+  <div id="div1"></div>
+  <div id="div2"></div>
+  <script>
+  class Div{
+    constructor(id){
+      this.elem=document.getElementById(id);
+    }
+    init(){
+      this.elem.onmousedown=(e)=>{
+        this.down(e);
+        document.onmousemove=(e)=>{
+          this.move(e);
+          document.onmouseup=(e)=>{
+            document.onmousemove=null;
+            document.onmouseup=null;
+          }
+        }
+        return false;
+      }
+    }
+    down(e){
+      this.disX=this.elem.offsetLeft;
+      this.disY=this.elem.offsetTop;
+      this.mouseX=e.pageX;
+      this.mouseY=e.pageY;
+    }
+    move(e){
+      this.elem.style.left=(this.disX+e.pageX-this.mouseX)+"px";
+      this.elem.style.top=(this.disY+e.pageY-this.mouseY)+"px";
+    }
+  }
+
+  class LimitDiv extends Div{
+    move(e){
+      let x=this.disX+e.pageX-this.mouseX;
+      let y=this.disY+e.pageY-this.mouseY;
+      if(x<0){
+        x=0;
+      }
+      else if(x>window.innerWidth-this.elem.offsetWidth){
+        x=window.innerWidth-this.elem.offsetWidth;
+      }
+
+      if(y<0){
+        y=0;
+      }
+      else if(y>window.innerHeight-this.elem.offsetHeight){
+        y=window.innerHeight-this.elem.offsetHeight;
+      }
+      this.elem.style.left=x+"px";
+      this.elem.style.top=y+"px";
+    }
+  }
+  var div=new Div("div1");
+  var div2=new LimitDiv("div2");
+  div.init();
+  div2.init();
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{message}}
+    <my-title></my-title>
+    <my-list></my-list>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+  var bus= new Vue();
+
+  var vm=new Vue({
+    el:"#app",
+    data:{
+      message:"hello"
+    },
+    components:{
+      'my-title':{
+        template:"<div>{{message}}</div>",
+        data(){
+          return{
+            message:"title"
+          }
+        },
+        mounted(){
+          bus.$on("pub",(data)=>{
+            this.message=data;
+          })
+        }
+      },
+      'my-list':{
+        template:`<ul><li v-for="item of list" @click="click">{{item}}</li></ul>`,
+        data(){
+          return{
+            list:[111,222,333]
+          }
+        },
+        methods:{
+          click(ev){
+            bus.$emit("pub",ev.target.innerHTML)
+          }
+        }
+      }
+    }
+  })
+  </script>
+</body>
+</html>

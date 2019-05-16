@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="animate.css">
+  <style>
+  .asdf-enter-active, .asdf-leave-active {
+    transition: opacity .5s;
+  }
+  .asdf-enter, .asdf-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+  /* .asdf-enter-to , .asdf-leave{
+    opacity:0.5
+  } */
+
+
+
+
+  .bounce-enter-active {
+  animation: bounce-in .5s;
+  }
+  .bounce-leave-active {
+    animation: bounce-in .5s reverse;
+  }
+  @keyframes bounce-in {
+    /* 0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    } */
+    0%{
+      transform:translateX(100px)
+    }
+    100%{
+      transform:translateX(0)
+    }
+  }
+
+  #nav{
+    margin: 0;
+    padding: 0;
+    width:100px;
+    height:300px;
+    background: black;
+    color: white;
+  }
+
+  .nav-enter,.nav-leave-to{
+    transform: translateX(-100%);
+    opacity:0;
+
+  }
+  .nav-enter-active ,.nav-leave-active{
+    transition: all .3s;
+  }
+
+  #nav2{
+    margin: 0;
+    padding: 0;
+    width:100px;
+    height:300px;
+    background: black;
+    color: white;
+  }
+  .nav2-enter-active{
+    animation:bb 1s;
+  }
+  .nav2-leave-active{
+    animation:bb 1s reverse;
+  }
+  @keyframes bb{
+    0%{
+      transform:translateX(-100%);
+      opacity:0;
+    }
+    100%{
+      transform:translateX(0);
+      opacity:1;
+    }
+  }
+</style>
+</head>
+<body>
+  <div id="app">
+    <button @click="add">点击</button>
+    <transition name="asdf">
+        <div v-if="show">asdf</div>
+    </transition>
+
+    <transition name="bounce">
+        <p v-if="show">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus.</p>
+      </transition>
+      
+    <transition name="animate"
+    enter-active-class="animated flash"
+    leave-active-class="animated bounceOutRight">
+        <div v-if="show">asdf</div>
+    </transition>
+
+
+    <transition name="nav">
+        <div v-if="show" id="nav">asdf</div>
+    </transition>
+
+    <transition name="nav2" appear>
+        <div v-if="show" id="nav2">asdf</div>
+    </transition>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+  var vm=new Vue({
+    el:"#app",
+    data:{
+      show:true
+    },
+    methods:{
+      add(){
+        this.show=!this.show;
+      }
+    }
+  })
+  </script>
+</body>
+</html>

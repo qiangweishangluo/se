@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    {{count}}
+    <add @change="changeC"></add>
+    <remove></remove>
+    <br>
+    <add2 :mess="count" @add2="parentAdd2"></add2>
+    <remove2 :mess="count" @remove2="parentRemove2"></remove2>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+  
+  var bus=new Vue();
+  var vm=new Vue({
+    el:"#app",
+    data:{
+      count:0
+    },
+    methods:{
+      changeC(data){
+        this.count+=data;
+      },
+      parentAdd2(data){
+        this.count=data;
+      },
+      parentRemove2(data){
+        this.count=data;
+      }
+    },
+    mounted(){
+      bus.$on("pub",(data)=>{
+        this.count+=data;
+      })
+    },
+    components:{
+      'add':{
+        template:"<button @click='add'>+</button>",
+        methods:{
+          add(){
+            this.$emit("change",1);
+          }
+        }
+      },
+      'remove':{
+        template:"<button @click='remove'>-</button>",
+        methods:{
+          remove(){
+            bus.$emit("pub",-1);
+          }
+        }
+      },
+      'add2':{
+        template:"<button @click='add'>+2</button>",
+        props:["mess"],
+        methods:{
+          add(){
+            var count=this.mess+2;
+            this.$emit("add2",count);
+          }
+        }
+      },
+      'remove2':{
+        template:"<button @click='remove2'>-2</button>",
+        props:["mess"],
+        methods:{
+          remove2(){
+            var count=this.mess-2;
+            this.$emit("remove2",count);
+          }
+        }
+      }
+    }
+  })
+  </script>
+</body>
+</html>

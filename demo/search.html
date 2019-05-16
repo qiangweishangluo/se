@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <input type="text" v-model="text">
+    <ul>
+      <li v-for="item of filterList()">{{item}} </li>
+    </ul>
+
+  </div>
+
+  <script src="vue.js"></script>
+  <script>
+  var vm=new Vue({
+    el:"#app",
+    data:{
+      text:"",
+      list:[
+        "a","ab","abc","bcd"
+      ]
+    },
+    computed:{
+    },
+    methods:{
+      filterList(){
+        return this.list.filter((item)=>{
+          return item.indexOf(this.text)!=-1
+        })
+      }
+
+    }
+  })
+  
+  </script>
+</body>
+</html>

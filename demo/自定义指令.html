@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div v-color="'red'">123</div>
+    <div v-color="'blue'">123</div>
+    <div v-color="yellow">123</div>
+
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    // Vue.directive('color',{
+    //   inserted(el,data){
+    //     console.log(el);
+    //     console.log(data);
+    //     el.style.background=data.value
+    //   },
+    //   update(el,data){
+    //     el.style.background=data.value
+    //   }
+    // })
+    // Vue.directive('color',(el,data)=>{
+    //   el.style.background=data.value
+    // })
+    var vm=new Vue({
+      el:"#app",
+      data:{
+        yellow:"yellow"
+      },
+      directives:  {
+        color(el,data){
+          el.style.background=data.value
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .red{background: red}
+  .blue{background:blue}
+  .hotpink{background: hotpink}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div :class="true?'red':blue">123123</div>
+    <div :class="{red:false,blue:true}">123123</div>
+
+    <div :class="class1">123123</div>
+    <div :class="[class1,class2]">123123</div>
+
+    <div :style="{background:'green'}">
+      123123123
+    </div>
+  </div>
+
+  <script src="vue.js"></script>
+  <script>
+    var vm=new Vue({
+      el:"#app",
+      data:{
+        class1:{red:true},
+        class2:{hotpink:true},
+      }
+    })
+  
+  </script>
+</body>
+</html>

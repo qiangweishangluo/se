@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  #header{
+    text-align: center;
+    background:red;
+    color:white;
+  }
+  #button1{
+    /* float:left;  */
+  }
+  #button2{
+    /* float:right */
+  }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <my-header><button id="button1" slot="left">-</button><button id="button2" slot="right">+</button></my-header>
+
+    <my-header><button id="button2" slot="right">+</button></my-header>
+
+    <my-ul>
+      <my-li></my-li>
+    </my-ul>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+  var vm=new Vue({
+    el:"#app",
+    data:{
+
+    },
+    components:{
+      'my-header':{
+        template:"<div id='header'><slot name='left'>我是默认的</slot>默认标题 <slot name='right'></slot></div>",
+      },
+      'my-ul':{
+        template:"<ul><slot></slot></ul>",
+      },
+      'my-li':{
+        template:"<li>111</li>"
+      }
+    }
+  })
+  </script>
+</body>
+</html>

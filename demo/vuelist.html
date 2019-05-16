@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="text"> <button @click="add()">添加</button>
+    <ul>
+      <li v-for="(item,i) in list" :key="item.id"> {{item.name}} <button @click="remove(i)">x</button> </li>
+    </ul>
+    <ul>
+      <li v-for="item of list"> {{item.name}} </li>
+    </ul>
+
+
+  </div>
+
+
+  <script src="vue.js"></script>
+  <script>
+  var vm=new Vue({
+    el:"#app",
+    data:{
+      list:[
+        {id:1,name:111},
+        {id:2,name:222},
+        {id:3,name:333},
+      ],
+      text:""
+    },
+    methods:{
+      add(){
+        // this.list.push(this.text);
+        this.list.unshift({
+          id:9,
+          name:this.text});
+      },
+      remove(i){
+        this.list.splice(i,1);
+      }
+    }
+  })
+  </script>
+</body>
+</html>

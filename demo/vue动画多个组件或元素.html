@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .show-enter,.show-leave-to{
+    transform:translateX(100px);
+    opacity:0;
+  }
+  .show-enter-active,.show-leave-active{
+    transition:all 1s;
+  }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button @click="change">点击</button>
+    <transition name="show" appear mode="out-in">
+
+      <div v-if="show" key="0">111</div>
+      <div v-else key="1">222</div>
+
+     </transition>
+     <transition name="show" appear mode="in-out">
+
+        <div v-if="show" key="0">111</div>
+        <div v-else key="1">222</div>
+  
+       </transition>
+
+  </div>
+  <script src="vue.js"></script>
+  <script>
+  var vm=new Vue({
+    el:"#app",
+    data:{
+      show:true
+    },
+    methods:{
+      change(){
+        this.show=!this.show;
+      }
+    }
+  })
+  </script>
+</body>
+</html>

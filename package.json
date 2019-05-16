@@ -1,0 +1,23 @@
+{
+  "name": "vue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "go": "nodemon cli"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.11",
+    "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.4"
+  }
+}

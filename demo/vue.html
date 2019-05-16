@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .red{
+    background: red
+  }
+  .blue{
+    background: blue;
+  }
+  </style>
+</head>
+<body>
+  <div id="app" v-bind:title="message" :class="style">
+    {{message}},{{title}}
+    <div v-html="title"></div>
+    <div v-if="false">{{message}}</div>
+    <div v-show="false">{{message}}</div>
+    <div v-on:click="show">{{message}}</div>
+    <div v-once>{{message}}</div>
+    {{1+1}}
+    {{true?1:2}}
+  </div>
+
+  <div id="app2">
+    
+      {{message}}
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    var key="show";
+  var vm=new Vue({
+    el:"#app",
+    data:{
+      message:"hello vue",
+      title:"<h2>123</h2>",
+      style:"red"
+    },
+    methods:{
+      [key](){
+        console.log(123);
+      },
+      hide(){
+        console.log(321);
+      },
+    }
+  });
+  
+  </script>
+</body>
+</html>

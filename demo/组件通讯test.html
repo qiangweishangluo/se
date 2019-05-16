@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <bro1></bro1>
+    <bro2></bro2>
+
+  </div>
+  <script src="vue.js"></script>
+  <script>
+
+  var bus=new Vue();
+
+  var vm=new Vue({
+    el:"#app",
+    data:{
+
+    },
+    components:{
+      'bro1':{
+        template:"<div>{{message}}</div>",
+        data(){
+          return{
+            message:"等待接收"
+          }
+        },
+        mounted(){
+          bus.$on("pub",(data)=>{
+            this.message=data;
+          })
+        }
+      },
+      'bro2':{
+        template:`<div @click="pub">2</div>`,
+        methods:{
+          pub(){
+            bus.$emit("pub","你好呀大侦探");
+          }
+        }
+      }
+    }
+  })
+  
+  </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    <input type="text" v-model="name" >
+    <input type="text" ref="input1">
+    <!-- <input type="text" @keyup.enter=""> -->
+    <button @click="setText('')">all</button>
+    <button @click="setText('男')">男</button>
+    <button @click="setText('女')">女</button>
+    <ul>
+      <li v-for="(item,i) of newList">
+        姓名:
+        {{item.name}}
+      </li>
+    </ul>
+    <div>查询到: {{newList.length}}</div>
+  </div>
+
+  <script src="vue.js"></script>
+  <script>
+  var vm=new Vue({
+    el:"#app",
+    data:{
+      name:"",
+      text:"",
+      list:[
+        {name:"dongfang",sex:"男",age:20},
+        {name:"123",sex:"女",age:20},
+        {name:"go",sex:"男",age:20},
+        {name:"niubi",sex:"男",age:20},
+      ],
+      newList:[]
+    },
+    methods:{
+      // search(){
+      //   var result=[];
+      //   if(this.text=="")
+      //   {
+      //     result=this.list;
+      //   }
+      //   else{
+      //     result=this.list.filter((item)=>{
+      //       return item.sex==this.text;
+      //     })
+      //   }
+      //   if(this.name!="")
+      //   {
+      //     return result.filter((item)=>{
+      //     return item.name==this.name;
+      //   })
+      //   }
+      //   else{
+      //     return result;
+      //   }
+        
+      // },
+      // search(){
+      //   if(this.text=="")
+      //   {
+      //     return this.list.filter((item)=>{
+      //       return item.name.indexOf(this.name)!=-1;
+      //     });
+      //   }
+      //   else{
+      //     return this.list.filter((item)=>{
+      //       return item.sex==this.text&&(this.name==""?true:item.name.indexOf(this.name)!=-1);
+      //     })
+      //   }
+        
+      // },
+      search(){
+        console.log(this.$refs);
+        console.log(this.$refs.hasOwnProperty("input1"));
+        if(this.$refs.hasOwnProperty("input1"))
+        {
+            if(this.text=="")
+          {
+            this.newList =this.list.filter((item)=>{
+              return this.$refs.input1.value==""?true:item.name.indexOf(this.$refs.input1.value)!=-1;
+            });
+          }
+          else{
+            console.log(this.$refs.input1.value);
+            this.newList = this.list.filter((item)=>{
+              return item.sex==this.text&&(this.$refs.input1.value==""?true:item.name.indexOf(this.$refs.input1.value)!=-1);
+            })
+          }  
+        }
+        else{
+          this.newList=this.list;
+        }
+      },
+      setText(key){
+        this.text=key;
+        this.search();
+      }
+    }
+  })
+  </script>
+</body>
+</html>

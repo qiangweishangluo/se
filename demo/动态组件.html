@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul{
+      overflow: hidden;
+    }
+  li{
+    float:left;
+    margin: 20px;
+    padding: 0;
+
+  }
+  .change-enter,.change-leave-to{
+    transform:translateX(-100%);
+    opacity:0;
+  }
+  .change-enter-active,.change-leave-active{
+    transition:all 1s;
+  }
+  div{
+    display: inline-block
+  }
+  </style>
+</head>
+<body>
+  <div id="app">
+
+    <ul>
+      <li @click="liclick(item)" v-for="item of tabList">{{item}}</li>
+    </ul>
+    <keep-alive>
+      <transition name="change" mode="out-in">
+
+       <component :is="showTab"></component>
+    
+      </transition>
+
+    </keep-alive>
+    <!-- <tab1></tab1> -->
+
+    <component :is="'tab1'"></component>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+
+
+
+  var vm=new Vue({
+    el:"#app",
+    data:{
+      showTab:'tab1',
+      tabList:['tab1','tab2','tab3']
+    },
+    methods:{
+      liclick(data){
+        this.showTab=data;
+      }
+    },
+    components:{
+      tab1:{
+        template:"<div>1 <input type='text'></div>"
+      },
+      tab2:{
+        template:"<div>2 <input type='text'></div>"
+      },
+      tab3:{
+        template:"<div>3 <input type='text'></div>"
+      },
+    }
+  })
+  </script>
+</body>
+</html>

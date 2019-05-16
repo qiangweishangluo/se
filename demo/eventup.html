@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="text" @keyup.enter="add()">
+    <button @click.right.prevent="add()">添加</button>
+    
+    <button @contextmenu.prevent="add()">添加</button>
+    <ul>
+      <li v-for="item in list">
+        {{item}}
+      </li>
+    </ul>
+
+    <div @click.capture="aa(22)">
+      22222222
+      <div @click="aa(44)">4444444444</div>
+    </div>
+
+    <div @click="aa(22)">
+        22222222
+        <div @click.stop="aa(44)">4444444444</div>
+    </div>
+
+    
+    <div @click.self="aa(22)">
+        22222222
+        <div @click="aa(44)">4444444444</div>
+    </div>
+
+    <div @click="aa(22)">
+        22222222
+        <div>4444444444</div>
+    </div>
+  </div>
+
+
+  <script src="vue.js"></script>
+  <script>
+  var vm=new Vue({
+    el:"#app",
+    data:{
+      text:"",
+      list:[]
+    },
+    methods:{
+      add(){
+        this.list.push(this.text);
+      },
+      aa(n){
+        console.log(n);
+      }
+    }
+
+  })
+  </script>
+</body>
+</html>

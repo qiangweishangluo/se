@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .change-enter,.change-leave-to{
+    transform:translateX(-100%);
+  }
+  .change-enter-active,.change-leave-active{
+    transition:all .3s;
+  }
+  ul{
+    display: inline-block;
+  }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <input ref="input" type="text">
+    <button @click="add">添加</button>
+      <transition-group tag="ul" name="change">
+       <li v-for="(item,index) of list" :key="item">{{item}} <button @click="remove(index)">-</button> </li >
+      </transition-group>
+
+  </div>
+  <script src="vue.js"></script>
+  <script>
+  var vm=new Vue({
+    el:"#app",
+    data:{
+      list:[11,22,33]
+    },
+    methods:{
+      add(){
+        this.list.push(this.$refs.input.value);
+      },
+      remove(index){
+        // this.list.pop(ev.target.key);
+        this.list.splice(index,1);
+      } 
+    }
+  })
+  </script>
+</body>
+</html>

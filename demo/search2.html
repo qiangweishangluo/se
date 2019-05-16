@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input ref="input1" type="text">
+    <ul>
+      <li v-for="item of search">姓名：{{item.name}} &nbsp;性别：{{item.sex}} </li>
+    </ul>
+    <button @click="setViewList('')">all</button>
+    <button @click="setViewList('男')">男</button>
+    <button @click="setViewList('女')">女</button>
+  </div>
+
+  <script src="vue.js"></script>
+  <script>
+  var vm=new Vue({
+    el:"#app",
+    data:{
+      text:"",
+      list:[
+        {name:"xiaoming",sex:"男"},
+        {name:"xiaoming",sex:"女"},
+        {name:"孙悟空",sex:"男"},
+        {name:"贝吉塔",sex:"男"},
+        {name:"giao哥",sex:"男"},
+      ],
+      viewList:[]
+    },
+    computed:{
+      search(){
+        if(this.viewList.length==0)
+        {
+          return this.list;
+        }
+        else{
+          return this.viewList;
+        }
+      }
+    },
+    methods:{
+      setViewList(sex){
+        var val=this.$refs.input1.value;
+        var vList=[];
+        //判断，搜索框有无值
+        if(val!="")
+        {
+          vList=this.list.filter((item)=>{
+            return item.name.indexOf(val)!=-1;
+          })
+        }
+        else{
+        
+          vList=this.list;
+        }
+        vList=vList.filter((item)=>{
+          if(sex!=""){
+            return item.sex==sex;
+          }
+          else{
+            return item;
+          }
+        })
+          this.viewList=vList;
+          if(vList.length==0){
+          alert("查无此值！");
+          }
+      }
+    }
+  })
+  
+  </script>
+</body>
+</html>

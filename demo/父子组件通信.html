@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{message}}
+    <my-header :mess="message" ></my-header>
+
+
+  </div>
+  <script src="vue.js"></script>
+  <script>
+  var vm=new Vue({
+    el:"#app",
+    data:{
+      message:"你好",
+    },
+    components:{
+      'my-header':{
+        template:"<h2><div @click.stop='click'>内容: {{mess}}</div> <my-title :mess='mmess'  @parentM='getMess'></my-title></h2>",
+        props:['mess'],
+        data(){
+          return {
+            mmess:this.mess
+          }
+        },
+        methods:{
+          click(){
+            // this.mess="gogo"
+            this.mmess="gogo"
+          },
+          getMess(data){
+            console.log("我得到了"+data);
+
+          }
+        },
+        components:{
+          'my-title':{
+            template:"<p @click='getMess' ref='textMess'>我是title中的内容:{{mess}}</p>",
+            props:['mess'],
+            data(){
+              return{
+                message:"gogogohaha"
+              }
+            },
+            methods:{
+              getMess(ev){
+                // console.log(ev.target.innerHTML);
+                // console.log(this.$refs.textMess.innerHTML);
+                // this.$emit('getMess',ev.target.innerHTML);
+                this.$emit('parentM',this.message);
+              }
+            }
+          }
+        }
+      }
+    }
+  })
+  
+  </script>
+</body>
+</html>
