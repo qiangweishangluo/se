@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  [v-cloak]{
+    display: none;
+  }
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <div>{{message}}</div>
+    <button @click="go">go</button>
+    <button @click="stop">stop</button>
+  </div>
+  <script src="demo/vue.js"></script>
+  <script>
+    setTimeout(() => {
+      var vm=new Vue({
+      el:"#app",
+      data:{
+        message:"  hello Vue.js",
+        interval:null
+      },
+      methods:{
+        go(){
+          if(this.interval==null)
+          {
+            this.interval=setInterval(() => {
+            this.message=this.message.substring(1)+this.message.substring(0,1);
+            }, 300);
+          }
+        },
+        stop(){
+          clearInterval(this.interval);
+          this.interval=null;
+        }
+      }
+    }) 
+    }, 2000);
+    
+  </script>
+</body>
+</html>
