@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="app">
+        <!-- if else -->
+        <div v-if="display">{{display}} </div>
+        <div v-else>false</div>
+
+        <div v-if="type=='a'">a</div>
+        <div v-else-if="type=='b'">b</div>
+        <div v-else>c</div>
+
+        <div v-show="block">block </div>
+
+        <!-- for -->
+        <ul>
+            <li v-for="item in list">{{item.name}} </li>
+        </ul>
+        <ul>
+            <li v-for="(item,i) in list" :key="i">{{i}},{{item.name}} </li>
+        </ul>
+        <ul>
+            <li v-for="(val, key, i) in obj">{{val}},{{key}},{{i}} </li>
+        </ul>
+
+        <input type="text" v-model="searchname">
+        <ul>
+            <li v-for="item in search(searchname)">{{item.name}} </li>
+        </ul>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                display: true,
+                block: false,
+                type: "a",
+                list: [{ name: "hengheng" }, { name: "haha" }, { name: "giao" }],
+                obj: { name: "suwukong", age: "123" },
+                searchname: ""
+            },
+            methods: {
+                search(searchname) {
+                    return this.list.filter((x) => {
+                        return x.name.indexOf(searchname) != -1;
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

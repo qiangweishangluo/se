@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <boss></boss>
+        <brother></brother>
+    </div>
+
+    <template id="boss">
+        <div>
+            我是BOSS
+            跟弟弟说话:
+            <input type="text" v-model="speck">
+        </div>
+    </template>
+
+    <template id="brother">
+        <div>
+            我是弟弟
+            哥哥说的话:
+            <input type="text" :value="msg">
+        </div>
+    </template>
+    <script src="vue.js"></script>
+    <script>
+
+        var bus= new Vue();
+
+    var c1=Vue.component("boss",{
+        template:"#boss",
+        data(){
+            return {speck:""}
+        },
+        watch:{
+            speck(el){                      //监听boss的话
+                bus.$emit("pub",el);        //触发pub事件
+            }
+        }
+    })
+    Vue.component("brother",{
+        template:"#brother",
+        data(){
+            return {msg:""}
+        },
+        mounted(){                          //渲染周期结束
+            bus.$on("pub",(data)=>{         //监听pub事件
+                this.msg=data;
+            })
+        }
+    })
+    var vm=new Vue({
+        el:"#app"
+    })
+    </script>
+</body>
+</html>

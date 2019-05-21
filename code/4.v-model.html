@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="n1">
+        单价:{{n1}}
+        <input type="text" v-model="n2">
+        *个数:{{n2}}
+
+        =总价:{{result}}
+
+        <input v-model="radio" type="radio" value="a">
+        <input v-model="radio" type="radio" value="b">{{radio}}
+
+        <input v-model="checkbox" type="checkbox" value="a">
+        <input v-model="checkbox" type="checkbox" value="b">
+        <input v-model="checkbox" type="checkbox" value="c">{{checkbox}}
+
+        <select v-model="select" name="" id="">
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select>
+        {{select}}
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                n1: "", n2: "", result: "", radio: "a", checkbox: [],select:""
+            },
+            watch: {
+                n1() {
+                    this.result = this.n1 * this.n2;
+                },
+                n2() {
+                    this.result = this.n1 * this.n2;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
