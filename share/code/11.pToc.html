@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <parent>
+        </parent>
+
+    </div>
+
+    <template id="p">
+        <div>
+            父组件
+            {{msg}}
+            <!--  传递data,并使用子组件  -->
+            <children :mess="msg"></children>
+        </div>
+
+    </template>
+    <template id="c">
+        <div>
+            子组件
+            <!-- 使用父组件给的data  -->
+            {{mess}}
+        </div>
+    </template>
+
+    <script src="vue.js"></script>
+
+    <script>
+        Vue.component("parent", {
+            template: "#p",
+            data() {
+                return { msg: "父组件的信息" }
+            },
+            components: {
+                children: {
+                    template: "#c",
+                    props: ["mess"]      //接收父组件data
+                }
+            }
+        })
+        var vm = new Vue({
+            el: "#app"
+        })
+    </script>
+</body>
+
+</html>

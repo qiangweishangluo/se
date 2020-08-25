@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <div id="msg">
+            {{msg}}
+        </div>
+        <button @click="msg='haha'">button</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "hello"
+            },
+            methods: {
+                getMsg() {
+                    console.log(this.msg);
+                }
+            },
+            beforeCreate() {
+                console.log("*********beforeCreate**********");
+                console.log(this.msg);
+                this.getMsg();
+                console.log(document.querySelector("#msg").innerText);
+            },
+            created() {
+                console.log("*********created**********");
+                console.log(this.msg);
+                this.getMsg();
+                console.log(document.querySelector("#msg").innerText);
+            },
+            beforeMount() {
+                console.log("*********beforeMount**********");
+                console.log(this.msg);
+                this.getMsg();
+                console.log(document.querySelector("#msg").innerText);
+            },
+            mounted() {
+                console.log("*********mounted**********");
+                console.log(this.msg);
+                this.getMsg();
+                console.log(document.querySelector("#msg").innerText);
+            },
+            beforeUpdate() {
+                console.log("*********beforeUpdate**********");
+                console.log(document.querySelector("#msg").innerText);
+            },
+            updated(){
+                console.log("*********updated**********");
+                console.log(document.querySelector("#msg").innerText);
+            }
+        })
+    </script>
+</body>
+
+</html>

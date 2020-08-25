@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div id="app">
+        {{count}}
+        <button @click="add">add </button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            count:0
+        },
+        methods:{
+            add(){
+                this.count++;
+            }
+        }
+    })
+    </script> -->
+    <div id="app">
+        {{text}}
+        <button v-on:click="go">go</button>
+        <!-- 简写 -->
+        <button @click="stop">stop</button>
+
+
+
+        <div @click="aa('父')">
+            父
+            <div @click="aa('子')">子</div>
+        </div>
+
+        <div @click="aa('父')">
+            父
+            <div @click.stop="aa('子')">子</div>
+        </div>
+
+        <div @click.self="aa('父')">
+            父
+            <div @click="aa('子')">子</div>
+        </div>
+
+        <a href="#">a</a>
+        <a href="#" @click.prevent>a</a>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                text: "猥琐发育别浪!",
+                interval: null
+            },
+            methods: {
+                go() {
+                    if (this.interval != null) return;
+                    this.interval = setInterval(() => {
+                        this.text = this.text.substring(1) + this.text.substring(0, 1);
+                    }, 100)
+                },
+                stop() {
+                    clearInterval(this.interval);
+                    this.interval = null;
+                },
+                aa(n) {
+                    console.log(n);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="block">
+        <div class="title-first">标签描述：</div>
+        <div class="title-txt">设备当前使用的运营商，取值：中国移动、中国联通、中国电信、未知。</div>
+        <div class="title-second">1.标签描述：</div>
+        <div class="title-third">1.1标签描述：</div>
+    </div>
+    <table class="table">
+        <caption>表1 标签描述</caption>
+        <thead>
+            <tr>
+                <th width="70px;">序号</th>
+                <th width="120px;">数据源</th>
+                <th>上报机制</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>EMUI</td>
+                <td>用户在使用EMUI时，终端手机会记录当前的运营商信息，当“用户体验改进”开启时，会上报到云端，“用户体验改进”关闭时不会上报。</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>华为应用市场</td>
+                <td>应用市场在使用过程中，会记录当前运营商信息，当满足一定条件时上报到云端，例如：应用市场APP打开或者设备处于充电状态。</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>PUSH</td>
+                <td>Push是向华为手机推送消息的业务，App与Push服务器之间会建立消息通道，Push消息的发送接收日志中，包含运营商信息。（注：用户在手机端可自行关闭消息推送）</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

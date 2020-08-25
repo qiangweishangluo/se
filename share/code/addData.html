@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div id="div">
+            <ul></ul>
+        </div>
+        <div id="div2">
+            <ul>
+                <li v-for="item in message">{{item}} </li>
+            </ul>    
+        </div>
+        <button id="button1">add</button>
+        <button @click="click2">add2</button>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script>
+
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                message:[]
+            },
+            methods:{
+                click2(){
+                    this.message.push("123")
+                }
+            }
+        })
+
+        $("#button1").click(function(){
+            $("#div ul").append("<li>123</li>");
+        })
+    </script>
+</body>
+
+</html>

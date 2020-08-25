@@ -1,0 +1,157 @@
+/*********** 重置样式 start ************/
+ *{
+ 	margin:0;
+ 	padding:0;
+ }
+ body{
+  font-size:14px;
+  color:#000;
+  margin:40px 72px;
+  background: #fff;
+ }
+ ul{
+   list-style: none;
+ }
+ button,input{
+   outline:none;
+ }
+ /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸---谷歌*/
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+	border-radius: 8px;
+}
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+	border-radius: 8px;
+	background-color:#bfc3c6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #bfc3c6;
+	transition: all ease-in .35s;
+}
+.text-link{
+  color: #007DFF!important;
+  cursor:pointer;
+}
+.ellipsis{
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+ /*********** 重置样式 end ************/
+ .header{
+ 	font-size: 48px;
+	color: #3D4044;
+	text-align: center;
+ }
+ .title-first{
+ 	font-size: 36px;
+	color: #34363A;
+	margin:24px 0;
+ }
+ .title-txt{
+ 	font-size: 22px;
+	color: #212121;
+	line-height: 32px;
+ }
+ .title-second{
+ 	margin-top:16px;
+ 	font-size: 26px;
+	color: #2E3034;
+	line-height: 37px;
+	font-weight: bold;
+ }
+ .title-third{
+ 	font-size: 24px;
+	color: #2E3034;
+	line-height: 33px;
+	margin-top:8px;
+	font-weight: bold;
+ }
+ .table,.img-wrap{
+ 	margin-top:24px;
+ }
+ .table{
+ 	width:1010px;
+ 	border-collapse: collapse;
+    table-layout: fixed;
+    text-align:left;
+ }
+ .table thead tr{
+ 	height:32px;
+ 	line-height: 32px;
+ 	border-top:1px solid #BAC0C6;
+ 	border-bottom:1px solid #BAC0C6;
+
+ }
+ .table thead tr th{
+ 	position: relative;
+ 	font-size: 14px;
+	color: #212121;
+	font-weight: normal;
+	padding:0 8px;
+ }
+ .table thead tr th:after {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 14px;
+    position: absolute;
+    top: 9px;
+    right: -10px;
+    background: #d0d3d5;
+    margin-right: 10px;
+}
+.table thead tr th:last-child:after{
+	width:0;
+}
+ .table thead tr th:first-child,.table tbody tr td:first-child{
+ 	padding-left:40px;
+ }
+ .table tbody tr td{
+ 	padding:28px 8px;
+ 	font-size: 16px;
+	color: #212121;
+ }
+ .table tbody tr:nth-child(odd){
+ 	background: #FAFAFA; 
+ }
+  .table tbody tr{
+  	border-bottom:1px solid #E6E6E6;
+  }
+  .table tbody tr td:last-child{
+  	padding-right:40px;
+  }
+ .table caption,.img-wrap .img-title{
+ 	font-size: 22px;
+	color: #616570;
+	margin-bottom: 8px;
+	text-align: left;
+ }
+ .img{
+ 	width:1010px;
+ }
+ .comments{
+ 	margin-top: 24px;
+ 	background: #FFF7E5;
+	border: 1px solid #FBEBD6;
+	width:1484px;
+	padding:16px 24px 29px 24px;
+ }
+  .comments-title{
+  	font-size: 16px;
+	color: #212121;
+	font-weight: bold;
+	margin-bottom: 16px;
+  }
+  .comments-content li{
+  	font-size: 16px;
+	color: #888585;
+	line-height: 22px;
+  }

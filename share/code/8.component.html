@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <login></login>
+
+        <register></register>
+
+        <denglu></denglu>  
+
+        <zhuce></zhuce>
+
+        <counter></counter>
+        <counter></counter>
+        <counter></counter>
+
+        <childrenc></childrenc>
+
+    </div>
+
+    <template id="temp2">
+        <div>注册</div>
+    </template>
+
+
+    <template id="counter">
+        <div>
+                <input type="button" value="+1" @click="add">
+                {{count}}
+        </div>
+    </template>
+
+    
+
+    <script id="temp" type="x-template">
+            <div>
+                <a href="#">登录</a>
+            </div>
+    </script>
+
+    <script src="vue.js"></script>
+    <script>
+        //方法1
+        Vue.component("login", Vue.extend({
+            template: "<h1>login  {{msg}}</h1>",
+            data(){
+                return {msg:"nihao"}
+            }
+        }))
+
+        //方法2
+        Vue.component('register', {
+            template: "<h1>注册</h1>"
+        });
+
+        //方法3
+        Vue.component('denglu', {
+            template: "#temp"
+        });
+
+        Vue.component("zhuce",{
+            template:"#temp2"
+        })
+        //计数器小例子    解释组件data为何以函数返回的形式存在
+
+        var obj={count:0}
+        Vue.component("counter",{
+            template:"#counter",
+            data(){
+                // return obj;
+                return {count:0}
+            },
+            methods:{
+                add(){
+                    this.count++;
+                }
+            }
+        })
+        var vm = new Vue({
+            el: "#app",
+            data:{},
+            components:{
+                childrenc:{
+                    template:"<div><h1> 我是子组件</h1> <smallc></smallc></div>",
+                    components:{
+                        smallc:{
+                            template:`<h2>我是小小组件</h2>`
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
